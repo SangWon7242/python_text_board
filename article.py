@@ -92,18 +92,19 @@ def show_detail():
             return
             
 def do_update():
-    ano = int(input("수정할 게시물 번호를 입력 : "))
+    id = int(input("수정할 게시물 번호를 입력 : "))
+    
+    if not article_list:
+        print("게시물이 존재하지 않습니다.")
+        return   
     
     for article in article_list:
-        if article["번호"] == ano:            
+        if article.id == id:            
             new_title = input("새 제목 : ")
             new_body = input("새 내용 : ")
-            article["제목"] = new_title
-            article["내용"] = new_body
-            return
-    
-    print("없는 게시물입니다.")
-    return        
+            article.title = new_title
+            article.body = new_body
+            return    
             
 def do_delete():
     ano = int(input("삭제할 게시물 번호를 입력 : "))
