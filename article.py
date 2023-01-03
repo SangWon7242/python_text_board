@@ -31,17 +31,21 @@ def do_add(login_id):
     global last_no
 
     title = input("제목 : ")
-    body = input("내용 : ")
+    body = input("내용 : ")    
 
     for user in u.user_list:
         if user["아이디"] == login_id:
             name = user["아이디"]
+    
+    id = last_no            
+    last_no += 1
 
-    article = {"번호": last_no + 1, "제목": title, "내용": body, "작성자": name}
+    article = Article(id, title, body, name)
 
     print("게시물이 등록 되었습니다.")
+    print("등록 된 게시물 : {}".format(article))
     article_list.append(article)
-    last_no += 1
+    
 
 
 def show_list(split_cmd):
