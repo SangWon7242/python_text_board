@@ -96,9 +96,9 @@ def do_update():
     
     if not article_list:
         print("게시물이 존재하지 않습니다.")
-        return   
+        return           
     
-    for article in article_list:
+    for article in article_list:        
         if article.id == id:            
             new_title = input("새 제목 : ")
             new_body = input("새 내용 : ")
@@ -107,15 +107,17 @@ def do_update():
             return    
             
 def do_delete():
-    ano = int(input("삭제할 게시물 번호를 입력 : "))
+    id = int(input("삭제할 게시물 번호를 입력 : "))        
     
-    for article in article_list:                
-        if article["번호"] == ano:                                    
+    if not article_list:
+        print("게시물이 존재하지 않습니다.")
+        return 
+    
+    for article in article_list:                                
+        if article.id == id:                                    
             article_list.remove(article)
-            print("{}번 게시물이 삭제 되었습니다.".format(ano))                    
-        
-        print("없는 게시물입니다.")
-        return                                        
+            print("{}번 게시물이 삭제 되었습니다.".format(article.id))                    
+                                             
 # ======== board 관련 함수 끝 ==========
 
 # 게시판 기능
