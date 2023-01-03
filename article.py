@@ -1,5 +1,16 @@
 import user as u
 
+class Article():
+    def __init__(self, id, title, body, writer_name):
+        self.id = id
+        self.title = title
+        self.body = body
+        self.writer_name = writer_name
+        
+    def __str__(self):
+        return "id : {}, title : \"{}\", body : \"{}\", writer_name : {}".format(self.id, self.title, self.body, self.writer_name)
+
+
 article1 = {"번호": 1, "제목": "소니의 축구교실", "내용": "소니의 축구 강좌", "작성자": "sony7"}
 article2 = {"번호": 2, "제목": "류뚱의 야구교실", "내용": "류뚱의 야구 강좌", "작성자": "ryu99"}
 article3 = {"번호": 3, "제목": "길동의 도술교술", "내용": "길동의 도술 강좌", "작성자": "hong123"}
