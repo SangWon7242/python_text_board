@@ -10,14 +10,17 @@ class Article():
     def __str__(self):
         return "id : {}, title : \"{}\", body : \"{}\", writer_name : {}".format(self.id, self.title, self.body, self.writer_name)
 
-
-article1 = {"번호": 1, "제목": "소니의 축구교실", "내용": "소니의 축구 강좌", "작성자": "sony7"}
-article2 = {"번호": 2, "제목": "류뚱의 야구교실", "내용": "류뚱의 야구 강좌", "작성자": "ryu99"}
-article3 = {"번호": 3, "제목": "길동의 도술교술", "내용": "길동의 도술 강좌", "작성자": "hong123"}
-
-article_list = [article1, article2, article3]  # 게시물 저장소
+article_list = []  # 게시물 저장소
 
 last_no = len(article_list)
+
+# 테스트 데이터
+def make_test_data(article_list = article_list):    
+    for i in range(1, 6):
+        id = i
+        article_list.append(Article(id, "제목" + str(id), "내용" + str(id), "작성자" + str(id)))
+                                        
+make_test_data()
 
 # ======== board 관련 함수 ==========
 def help_list():
@@ -71,21 +74,22 @@ def show_list(split_cmd):
             )                  
     print("=================================")
 
-def show_detail():
-    ano = int(input("상세보기 할 게시물 번호 입력 : "))
+def show_detail():        
+    id = int(input("상세보기 할 게시물 번호 입력 : "))
+    
+    if not article_list:
+        print("게시물이 존재하지 않습니다.")
+        return        
     
     for article in article_list:
-        if article["번호"] == ano:            
+        if article.id == id:            
             print("==========  게시물 상세보기  =========")
-            print("번호 : ", article["번호"])
-            print("제목 : ", article["제목"])
-            print("내용 : ", article["내용"])
-            print("작성자 : ", article["작성자"])
+            print("번호 : ", article.id)
+            print("제목 : ", article.title)
+            print("내용 : ", article.body)
+            print("작성자 : ", article.writer_name)
             print("=================================")                                
             return
-        
-    print("없는 게시물입니다.")
-    return    
             
 def do_update():
     ano = int(input("수정할 게시물 번호를 입력 : "))

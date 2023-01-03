@@ -6,11 +6,17 @@ class Article():
         self.writer_name = writer_name
         
     def __str__(self):
-        return "id : {}, title : \"{}\", body : \"{}\", writer_name : {}".format(self.id, self.title, self.body, self.writer_name)
+        return "id : {}, title : \"{}\", body : \"{}\", writer_name : \"{}\"".format(self.id, self.title, self.body, self.writer_name)
 
-article = Article(1, "제목1", "내용1", "홍길동")
+article_list = []
 
-print(article)
-print(article.id)
-print(article.title)
-print(article.body)
+def make_test_data(article_list = article_list):    
+    for i in range(1, 6):
+        id = i
+        article_list.append(Article(id, "제목" + str(id), "내용" + str(id), "작성자" + str(id)))
+                                        
+make_test_data()
+
+for article in article_list:
+    print(article.id)
+    print(article.title)
